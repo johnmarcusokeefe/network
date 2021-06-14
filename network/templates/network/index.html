@@ -1,0 +1,26 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="title-block">
+  <h2 class="floatleft" id="page-title">{{ page_label }}</h2>
+</div>
+<div class="clearboth"></div>
+
+    {% if post_form %}
+    <div class="post-container">
+    <h4>New Post</h4>
+      <form class="post-form">
+        {{ post_form }}
+      <button class="btn btn-primary" id="post-button">Post</button>
+      </form>
+    </div>
+    {% endif %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      load_posts('no_user');
+      });
+    </script>
+    <div id="posts"></div>
+          
+{% endblock %}

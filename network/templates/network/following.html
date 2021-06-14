@@ -1,0 +1,15 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="title-bar">
+    <h2 class="floatleft" id="page-title">{{ page_label }}</h2>
+
+</div>
+
+  {% for follower in followers%}
+  <div class="follower">
+    <a href="">{{ follower.profiles__username }}</a>
+  </div>
+  {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="title-block">
+<h2 class="floatleft" id="page-title">{{ profile_user }}</h2>
+{% if profile_user != logged_in_user %}
+    <button class="btn btn-primary follow-button" onclick="follow('{{profile_user}}')">{{ following }}</button>
+{% endif %}
+</div>
+<div class="clearboth"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    load_posts('{{ profile_user }}');
+});
+</script>
+<div id="posts"></div>
+
+{% endblock %}

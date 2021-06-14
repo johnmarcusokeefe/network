@@ -1,0 +1,120 @@
+.clearboth {
+    clear: both;
+}
+
+.date::after {
+    clear: both;
+}
+#id_text {
+    margin: auto;
+    width: 100%;
+    height: 100px;
+}
+#logged-in {
+    display: none;
+}
+.post-container {
+    display: block;
+    width: 95%;
+    padding: 20px;
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.post-form {
+    display: block;
+    width: 100%;
+}
+#post-text {
+    display: block;
+    width: 100%;
+}
+.line-div {
+    display: block;
+    width: 100%;
+    border: 1px solid grey;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+#posts {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+.link-disabled a {
+    pointer-events: none;
+}
+.alink {
+    width: fit-content;
+    cursor: pointer;
+    color: #1E90FF;
+}
+.red {
+    color: red;
+}
+.underline {
+    text-decoration: underline;
+}
+.blue {
+    color: #1E90FF;
+}
+
+.follow-button {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+.title-block {
+    margin: auto;
+    width: 95%;
+}
+#page-title {
+    width: 200px;
+    float: left;
+}
+.follow-button-container {
+    width: 200px;
+    float: right;
+}
+.follower {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 10px;
+}
+.txt_area {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+}
+.user {
+    text-transform: capitalize;
+  }
+h2 {
+    text-transform: capitalize;
+}
+#username {
+    text-transform: capitalize;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+.date {
+    font-size: 10pt;
+    color: gray;
+}
+.text {
+   color: black;
+}
+ul {
+    margin: auto;
+    width: fit-content;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
