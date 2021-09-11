@@ -3,24 +3,29 @@
 
 {% block body %}
 <div class="title-block">
-  <h2 class="floatleft" id="page-title">{{ page_label }}</h2>
+  <h2 class="floatleft" id="page-title">All Posts</h2>
+  <div id="follow-button-container"></div>
 </div>
+
 <div class="clearboth"></div>
 
     {% if post_form %}
-    <div class="post-container">
+    <div class="post-container" id="post-container">
     <h4>New Post</h4>
-      <form class="post-form">
-        {{ post_form }}
+      <form class="post-form" method="POST">
+      {% csrf_token %}
+      {{ post_form }}
       <button class="btn btn-primary" id="post-button">Post</button>
       </form>
     </div>
     {% endif %}
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      load_posts('no_user');
-      });
-    </script>
-    <div id="posts"></div>
+    
+    <div id="posts">Currenly no posts to display!</div>
+    <!-- loads page numbers into nav_footer. currently set to top of page -->
+    <nav class="navbar" id="nav_footer"></nav>
+    <!-- initial load, calls the function to load all posts -->
+  <script>
+    posts("no_user",1);
+  </script>
           
 {% endblock %}

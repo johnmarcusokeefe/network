@@ -1,3 +1,14 @@
+html {
+    font-size: 1rem;
+  }
+.onclick-link {
+    text-transform: capitalize;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14pt;
+    color: #1E90FF;
+}
+
 .clearboth {
     clear: both;
 }
@@ -5,10 +16,32 @@
 .date::after {
     clear: both;
 }
+.editlink {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.follow-tally {
+    font-size: 0.9rem;
+    padding: 10px;
+}
+.header {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
 #id_text {
     margin: auto;
     width: 100%;
     height: 100px;
+}
+.likes {
+    padding-top: 5px;
+    padding-bottom: 20px;
+} 
+.like-count {
+    float: left;
+    font-size: 10pt;
+    margin-left: 5px;
 }
 #logged-in {
     display: none;
@@ -29,23 +62,47 @@
     display: block;
     width: 100%;
 }
+@keyframes show {
+    0% {
+        opacity: 0;
+        height: 100%;
+        line-height: 100%;
+        padding: 20px;
+        margin-bottom: 5px;
+
+}   100% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        padding: 20px;
+        margin-bottom: 5px;
+} 
+}
+
+/* blog post line */
 .line-div {
     display: block;
     width: 100%;
     border: 1px solid grey;
-    padding: 20px;
     border-radius: 5px;
-    margin-bottom: 5px;
+
+    animation-name: show;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
 }
-
-
+/* anchor point for blog posts */
 #posts {
+    display: block;
     width: 95%;
     margin: auto;
     margin-top: 10px;
 }
-
-
+.empty-message {
+    width: 100%;
+    clear: both;
+    padding-top: 20px;
+}
 .link-disabled a {
     pointer-events: none;
 }
@@ -53,6 +110,8 @@
     width: fit-content;
     cursor: pointer;
     color: #1E90FF;
+    float: left;
+    font-size: 13pt;
 }
 .red {
     color: red;
@@ -71,12 +130,17 @@
     float: left;
 }
 .title-block {
+    display: block;
     margin: auto;
+    margin-top: 20px;
+    
     width: 95%;
 }
 #page-title {
     width: 200px;
     float: left;
+    margin: auto;
+    margin-bottom: 10px;
 }
 .follow-button-container {
     width: 200px;
@@ -99,7 +163,7 @@ h2 {
     text-transform: capitalize;
 }
 #username {
-    text-transform: capitalize;
+    padding-top: 2px;
 }
 p {
     margin: 0;
@@ -108,13 +172,34 @@ p {
 .date {
     font-size: 10pt;
     color: gray;
+    margin-bottom: 10px;
 }
 .text {
    color: black;
+   margin-bottom: 10px;
+   margin-top: 10px;
 }
 ul {
     margin: auto;
     width: fit-content;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 20px;
+}
+.follower_line {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid lightgray;
+}
+#nav_footer {
+    float: right;
+    margin-right: 2.5%;
+    padding: 2px;
+}
+.navbar {
+    font-size: 10pt;
+}
+.stat {
+    padding-top: 15px;
+    font-size: 1rem;
+    margin-right: 20px;
 }

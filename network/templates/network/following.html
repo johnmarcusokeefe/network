@@ -1,15 +1,17 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
-<div class="title-bar">
-    <h2 class="floatleft" id="page-title">{{ page_label }}</h2>
-
+<div class="title-block">
+    <h2 id="page-title">{{ page_label }}</h2>
 </div>
-
-  {% for follower in followers%}
-  <div class="follower">
-    <a href="">{{ follower.profiles__username }}</a>
-  </div>
-  {% endfor %}
+<div class="clearboth"></div>
+<!-- posts from followed users -->
+<div id="posts">Currenly following no users!</div>
+<!-- loads page numbers into nav_footer. currently set to top of page -->
+ 
+  <nav class="navbar" id="nav_footer"></nav>
+  <script>
+    posts("multi",1);
+  </script>
 {% endblock %}
 

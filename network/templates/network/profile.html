@@ -1,19 +1,31 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
-<div class="title-block">
-<h2 class="floatleft" id="page-title">{{ profile_user }}</h2>
-{% if profile_user != logged_in_user %}
-    <button class="btn btn-primary follow-button" onclick="follow('{{profile_user}}')">{{ following }}</button>
+<div class="header">
+<div class="row">
+<div class="col-12">
+    <h2 id="page-title">{{ user_to_follow }}</h2>
+</div>
+</div>
+<div class="row">
+<div class="col-3">
+    <p class="stat text-muted float-left">{{ number_following}} Following</p>
+    <p class="stat text-muted float-left">{{ number_of_followers }} Followers</p>
+</div>
+{% if user.is_authenticated and same_user == "false" %}
+<form class="float-right col-9" action="{% url 'profile' user_to_follow %}" method="POST">
+    <button class="btn btn-primary follow-button" ><span id="follow-button-label">{{following_label}}</span></button>
+</form>
 {% endif %}
 </div>
+</div>
 <div class="clearboth"></div>
-
+<!-- posts loaded from javascript dom -->
+<div id="posts">Currenly no posts!</div>
+<!-- loads page numbers into nav_footer. currently set to top of page -->
+<nav class="navbar" id="nav_footer"></nav>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    load_posts('{{ profile_user }}');
-});
+    posts('{{user_to_follow}}',1);
 </script>
-<div id="posts"></div>
 
 {% endblock %}
