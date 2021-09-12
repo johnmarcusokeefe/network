@@ -96,7 +96,19 @@ function add_post() {
 // load posts, no_user will load all posts
 //
 function posts(username, page_number) {
-
+  console.log("page number", page_number);
+  // post form only displayed on page 1 causes error when logged out
+  if(username == "no_user") {
+    if(page_number > 1){
+      document.querySelector('#post-container').style.display = "none";
+    }
+    else {
+      if(document.querySelector('#post-container') != null){
+        document.querySelector('#post-container').style.display = "block";
+      }
+    }
+  }
+  
   // clear post list so to avoid appending
 
   //document.querySelector("#posts").innerHTML = message;
@@ -128,16 +140,14 @@ function posts(username, page_number) {
         document.querySelector("#posts").innerHTML = "";
         data['posts'].forEach(append_post);
       }
-     
-
-      // update page numbers
+      //
+      // update page numbers on navigation
+      //
       console.log("pages length", data['pages']);
       if(data['pages'] > 1) {
           page_numbers(username, data['pages']);
       }
-      else {
-         // document.getElementById("nav_footer").innerHTML = "";
-      }
+      
       // this adds onclick event to each edit link as per notes
       document.querySelectorAll('.editlink').forEach(div => {
         div.onclick = function () {
@@ -181,7 +191,7 @@ function profile(username, page_number) {
 function page_numbers(username, page_count) {
 
   // need to have a seperate container for pagination
-  console.log("page count", page_count)
+  
   navigation = document.getElementById("nav_footer");
   
   
@@ -309,25 +319,22 @@ async function append_post(post) {
   }
   catch {
     logged_in_user = "no_user";
+
   }
+
   // get the username
   const username = post.poster__username;
-
   // create user, post text, date
   const user_link = document.createElement("a");
   user_link.className = "user onclick-link";
   user_link.innerHTML = username;
   user_link.href = "/profile/"+username
-  //
-  //user_div.addEventListener("click", function () {
-  //   profile(username, 1);
-  //})
-  //
   // 
   // using methods from notes
   //
+  console.log("edit post id", post.id)
   const edit_link = document.createElement("div");
-  edit_link.className = "underline blue editlink";
+  edit_link.className = "underline blue editlink mt-2";
   if (logged_in_user == username) {
     edit_link.dataset.post = post.id;
     edit_link.id = "edit_" + post.id;
@@ -337,19 +344,23 @@ async function append_post(post) {
   //
   //
   const text_div = document.createElement("div");
-  text_div.className = "text";
+  text_div.className = "text border-bottom pb-5 mt-3 mb-1";
   text_div.id = "text_" + post.id;
+  // innetext displays text formatting
+  //console.log("search line breaks", post.text.search("\r"));
   text_div.innerHTML = post.text;
 
   const date_div = document.createElement("div");
-  date_div.className = "date";
+  date_div.className = "date float-right pb-2";
   date = new Date(post.timestamp);
-  date_div.innerHTML = date.toLocaleString();
+  
+  date_div.innerHTML = date.toDateString() + " " +date.toLocaleTimeString();
+
   //
   // todo: like button
   //
   const likes = document.createElement("div");
-  likes.className = "likes";
+  likes.className = "likes float-left";
 
   const like_link = document.createElement("div");
   like_link.className = "alink red";
@@ -375,13 +386,17 @@ async function append_post(post) {
   // append body_div to placeholder on webpage
   //
   const line_div = document.createElement("div");
-  line_div.className = "line-div clearboth";
+  line_div.className = "line-div pb-1";
+
+  const line_div_clear = document.createElement("div");
+  line_div_clear.className = "clearfix";
+
 
   if (logged_in_user != 'no_user') {
-    line_div.append(user_link, edit_link, text_div, date_div, likes);
+    line_div.append(user_link, edit_link, text_div, likes, date_div, line_div_clear);
   }
   else {
-    line_div.append(user_link, text_div, date_div);
+    line_div.append(user_link, text_div, date_div,  line_div_clear);
   }
   
   let line = document.querySelector('#posts');

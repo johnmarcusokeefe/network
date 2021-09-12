@@ -16,10 +16,6 @@ html {
 .date::after {
     clear: both;
 }
-.editlink {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
 .follow-tally {
     font-size: 0.9rem;
     padding: 10px;
@@ -34,10 +30,6 @@ html {
     width: 100%;
     height: 100px;
 }
-.likes {
-    padding-top: 5px;
-    padding-bottom: 20px;
-} 
 .like-count {
     float: left;
     font-size: 10pt;
@@ -91,6 +83,7 @@ html {
     animation-fill-mode: forwards;
     animation-play-state: running;
 }
+
 /* anchor point for blog posts */
 #posts {
     display: block;
@@ -172,12 +165,10 @@ p {
 .date {
     font-size: 10pt;
     color: gray;
-    margin-bottom: 10px;
 }
 .text {
-   color: black;
-   margin-bottom: 10px;
-   margin-top: 10px;
+    white-space: pre-wrap;
+    color: gray;
 }
 ul {
     margin: auto;

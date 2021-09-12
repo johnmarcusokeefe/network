@@ -28,7 +28,7 @@ def index(request):
     # posts will have to retrieve comments if exist
     return render(request, "network/index.html", {
         "post_form": post_form,
-        "page_label": "All Posts"
+        "page_label": "All Posts",
     })
 #
 @csrf_exempt
@@ -105,9 +105,8 @@ def profile(request, username):
 #
 # opens the following page
 #
+@login_required
 def following(request):
-    
-    
     
     return render(request, "network/following.html", {
         "page_label": "Following"
@@ -147,8 +146,6 @@ def posts(request, username="no_user"):
                     following_posts_date_descending.append(pr)
         posts_reverse = following_posts_date_descending
 
-    
-    
     # pagination setting
     posts_per_page = 10
     paginator = Paginator(posts_reverse, posts_per_page)
@@ -157,7 +154,6 @@ def posts(request, username="no_user"):
     # pass the page range for navigation
     page_range = paginator.num_pages
 
-    
     data = {"posts":list(post_group), "pages": page_range}
 
     # create list from posts
@@ -176,7 +172,7 @@ def add_post(request):
     post.save()
     return JsonResponse({"message": "Posted successfully."}, status=200)
 #
-# save post
+# saves edited post
 #
 @login_required
 @csrf_exempt
@@ -188,8 +184,7 @@ def save_post(request, post_id):
     saved_post = Post.objects.filter(id=post_id).values()
 
     return JsonResponse( list(saved_post), safe=False )
-
-
+    
 # 
 # follow currently adds to all users
 #
