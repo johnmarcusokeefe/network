@@ -100,12 +100,14 @@ function posts(username, page_number) {
   // post form only displayed on page 1 causes error when logged out
   if(username == "no_user") {
     if(page_number > 1){
-      document.querySelector('#post-container').style.display = "none";
+      if(document.querySelector('#post-container')  != null) {
+          document.querySelector('#post-container').style.display = "none";
+      };
     }
     else {
       if(document.querySelector('#post-container') != null){
         document.querySelector('#post-container').style.display = "block";
-      }
+      };
     }
   }
   
